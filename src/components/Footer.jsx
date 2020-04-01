@@ -5,7 +5,7 @@ let curentYear = new Date().getFullYear();
 function Footer() {
   return (
     <footer>
-      <p>Copyright {curentYear}</p>
+      <p>Copyright ⓒ {curentYear}</p>
     </footer>
   );
 }
