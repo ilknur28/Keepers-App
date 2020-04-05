@@ -1,14 +1,13 @@
 {
-  "name": "keeper-app-part-1-starting",
+  "name": "keeper-part-3-starting",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
-    "git": "^0.1.5",
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-scripts": "^3.4.1"
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-scripts": "3.4.1"
   },
   "devDependencies": {
     "typescript": "3.3.3"
