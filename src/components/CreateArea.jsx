@@ -1,48 +1,69 @@
 import React, { useState } from "react";
+import AddIcon from "@material-ui/icons/Add";
+import Fab from "@material-ui/core/Fab";
+import Zoom from "@material-ui/core/Zoom";
 
 function CreateArea(props) {
   const [note, setNote] = useState({
     title: "",
-    content: ""
+    content: "",
   });
 
-// ------------Handle change on the note-----------
+  const [animationCreateArea, setAnimationCreateArea] = useState(false);
+
+  function animationOn() {  // function to expand the Note creation area when gets clicked
+    return setAnimationCreateArea(true);
+  }
+  // ------------Handle change on the note-----------
 
   function handleChange(event) {
-    const {name, value} = event.target;
-    setNote(prevNote => {  // receiving the prev Note
-    return {
-      ...prevNote,
+    const { name, value } = event.target;
 
-      // turning the "name" key from string to actual value 
-      [name] : value 
-        }
-      });
+    setNote((prevNote) => {
+      // receiving the prev Note
+      return {
+        ...prevNote,
+
+        // turning the "name" key from string to actual value
+        [name]: value,
+      };
+    });
   }
 
-  function submitNote(event){
-    props.onAdd(note);//passing the current created note to App.js
+  function submitNote(event) {
+    props.onAdd(note); //passing the current created note to App.js
     setNote({
       title: "",
-    content: ""
+      content: "",
     });
     event.preventDefault();
   }
 
   return (
     <div>
-      <form>
-        <input name="title"
-        onChange={handleChange}
-         value={note.title} placeholder="Title" />
+      <form className="create-note">
+        {animationCreateArea && (
+          <input
+            name="title"
+            onChange={handleChange}
+            value={note.title}
+            placeholder="Title"
+          />
+        )}
+
         <textarea
           name="content"
+          onClick={animationOn}
           onChange={handleChange}
           value={note.content}
           placeholder="Take a note..."
-          rows="3"
+          rows={animationCreateArea ? "10" : "1"}
         />
-        <button onClick={submitNote} >Add</button>
+        <Zoom in={animationCreateArea}>
+          <Fab onClick={submitNote}>
+            <AddIcon />
+          </Fab>
+        </Zoom>
       </form>
     </div>
   );

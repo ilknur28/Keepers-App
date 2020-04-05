@@ -1,9 +1,11 @@
 import React from "react";
+import NoteIcon from '@material-ui/icons/Note';
 
 function Header() {
   return (
     <header>
-      <h1>Your Notes</h1>
+    
+      <h1><NoteIcon fontSize="large" />Your Notes</h1>
     </header>
   );
 }
